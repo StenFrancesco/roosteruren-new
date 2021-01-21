@@ -14,20 +14,23 @@
  */
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
+
 class RoosterItem {
 
-	public static function create_roosteritem($update) {
-		return self::update_roosteritem(false, $update);
+	public static function create_roosteritem($update, $user = false) {
+		return self::update_roosteritem(false, $update, $user);
 	}
 
-	public static function update_roosteritem($id, $update) {
+	public static function update_roosteritem($id, $update, $user = false) {
 		if (!$id && (empty($update['user']) || empty($update['afdeling']) || empty($update['date']))) return false;
 		
 		if (!$id && empty($update['date_created'])) $update['date_created'] = time();
+		if (!$id && $user) $update['created_by'] = $user;
 		if (empty($update['date_modified'])) $update['date_modified'] = time();
 		
 		if (!$id) $id = self::id_from_date_afdeling_user($update['date'], $update['afdeling'], $update['user']);
-		list($date, $afdeling, $user) = self::split_id($id);
+		list($date, $afdeling, $user) = array_values(self::split_id($id));
 
 		if ($id && $roosteritem = self::roosteritem_by_id($id)) {
 			$update = array_merge($roosteritem->data(), $update);
@@ -37,22 +40,25 @@ class RoosterItem {
 			'date' => $date,
 			'afdeling' => $afdeling,
 			'user' => $user,
-			'data' => gzdeflate(json_encode($update))
+			'data' => to_json_blob($update)
 		]);
 
 		\App\Models\UserDayIndex::index($user, $date);
 
-		return $id;
+		return self::roosteritem_by_id($id);
 	}
 
 	public static function roosteritem_by_id($id) {
 		if ($roosteritem = DB::table('roosteritem')->find($id)) {
-			return $roosteritem;
+			return new \App\Classes\Roosteritem($roosteritem);
 		}
 	}
 
 	public static function roosteritems_by_user_date($user, $date) {
 		if ($roosteritems = DB::table('roosteritem')->where('user', $user)->where('date', $date)->get()) {
+			foreach ($roosteritems as $i => $roosteritem) {
+				$roosteritems[$i] = new \App\Classes\Roosteritem($roosteritem);
+			}
 			return $roosteritems;
 		}
 	}

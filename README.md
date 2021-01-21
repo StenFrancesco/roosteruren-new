@@ -1,3 +1,12 @@
+Gebruikerssysteem moet later op een andere manier gekoppeld worden, voor nu handmatig een gebruiker aanmaken in de db en de volgende urls gebruiken:
+/users/login/1
+/users/logout
+
+
+Één profiel/account voor de hele site (email, password)
+Aparte user accounts per bedrijf (naam)
+
+
 roosteruren.nl
 - roosters
   - persoonlijk rooster
@@ -5,6 +14,8 @@ roosteruren.nl
   - bewerken
   - speciale roosters (EHBO/BHV)
   - openen/sluiten (optioneel)
+  - beschikbaarheid
+  - 
 - medewerkers
   - overzicht
   - bewerken

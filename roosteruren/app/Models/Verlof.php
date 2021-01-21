@@ -15,6 +15,8 @@
  */
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
+
 class Verlof {
 
 	public static function create_verlof($update) {
@@ -33,7 +35,7 @@ class Verlof {
 			'from' => $update['from'],
 			'to' => $update['to'],
 			'user' => $update['user'],
-			'data' => gzdeflate(json_encode($update))
+			'data' => to_json_blob($update)
 		];
 
 		if ($id) {
@@ -56,6 +58,12 @@ class Verlof {
 
 	public static function verlof_by_id($id) {
 		if ($verlof = DB::table('verlof')->find($id)) {
+			return $verlof;
+		}
+	}
+
+	public static function verlof_by_user_date($user, $date) {
+		if ($verlof = DB::table('verlof')->where('user', $user)->where('from', '<=', $date)->where('to', '>=', $date)->get()) {
 			return $verlof;
 		}
 	}

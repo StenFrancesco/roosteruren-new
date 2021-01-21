@@ -10,10 +10,14 @@
  */
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
+
 class UserDayIndex {
 
 	public static function index_user_daterange($user, $from, $to) {
-		
+		foreach (each_date($from, $to) as $date) {
+			self::index($user, $date);
+		}
 	}
 
 	public static function index($user, $date) {
@@ -28,7 +32,7 @@ class UserDayIndex {
 			'beschikbaar' => [],
 		];
 		
-		if ($roosteritems = \App\Model\RoosterItem::roosteritems_by_user_date($user, $date)) {
+		if ($roosteritems = \App\Models\RoosterItem::roosteritems_by_user_date($user, $date)) {
 			foreach ($roosteritems as $roosteritem) {
 				$update['rooster'][] = $roosteritem->data();
 				if ($roosteritem->val('afdeling') && !in_array($roosteritem->val('afdeling'), $afdelingen)) {
@@ -37,16 +41,28 @@ class UserDayIndex {
 			}
 		}
 
+		if ($verlofaanvragen = \App\Models\Verlof::verlof_by_user_date($user, $date)) {
+			foreach ($verlofaanvragen as $verlof) {
+				$update['verlof'][] = $verlof->data();
+			}
+		}
+
+		if ($ziekmeldingen = \App\Models\Ziek::ziek_by_user_date($user, $date)) {
+			foreach ($ziekmeldingen as $ziek) {
+				$update['ziek'][] = $ziek->data();
+			}
+		}
+
 		$id = self::id_from_user_date($user, $date);
 		
 		DB::table('user_day_index')->updateOrInsert(['id' => $id], [
 			'date' => $date,
 			'user' => $user,
-			'data' => gzdeflate(json_encode($update))
+			'data' => to_json_blob($update)
 		]);
 		
 		// Afdelingen in aparte koppeltabel omdat er meerdere afdelingen per userday kunnen zijn
-		if ($user_day_afdelingen = DB::table('user_day_index_afdeling')->where('user_day', $id)->get()) {
+		if ($user_day_afdelingen = DB::table('user_day_index_afdeling')->where('userday', $id)->get()) {
 			foreach ($user_day_afdelingen as $user_day_afdeling) {
 				if (!in_array($user_day_afdeling->afdeling, $afdelingen)) {
 					DB::table('user_day_index_afdeling')->where('id', $user_day_afdeling->id)->delete();
@@ -58,7 +74,7 @@ class UserDayIndex {
 		}
 		foreach ($afdelingen as $afdeling) {
 			DB::table('user_day_index_afdeling')->insert([
-				'userday' > $id,
+				'userday' => $id,
 				'afdeling' => $afdeling
 			]);
 		}
@@ -66,24 +82,33 @@ class UserDayIndex {
 		return $id;
 	}
 
-	public function userday_for_daterange($from, $to) {
-		if ($query = DB::table('user_day_index')->whereBetween('date', [$from, $to])->get()) {
-			return $query;
+	public static function userday_for_daterange($from, $to) {
+		if ($userdays = DB::table('user_day_index')->whereBetween('date', [$from, $to])->get()) {
+			foreach ($userdays as $i => $userday) {
+				$userdays[$i] = new \App\Classes\UserDay($userday);
+			}
+			return $userdays;
 		}
 	}
 
-	public function userday_for_afdeling_daterange($afdeling, $from, $to) {
-		if ($query = DB::table('user_day_index')->select('user_day_index.*')
+	public static function userday_for_afdeling_daterange($afdeling, $from, $to) {
+		if ($userdays = DB::table('user_day_index')->select('user_day_index.*')
 			->join('user_day_index_afdeling', 'user_day_index.id', '=', 'user_day_index_afdeling.userday')
 			->where('user_day_index_afdeling.afdeling', $afdeling)
 			->whereBetween('date', [$from, $to])->get()) {
-			return $query;
+			foreach ($userdays as $i => $userday) {
+				$userdays[$i] = new \App\Classes\UserDay($userday);
+			}
+			return $userdays;
 		}
 	}
 
-	public function userday_for_user_daterange($user, $from, $to) {
-		if ($query = DB::table('user_day_index')->where('user', $user)->whereBetween('date', [$from, $to])->get()) {
-			return $query;
+	public static function userday_for_user_daterange($user, $from, $to) {
+		if ($userdays = DB::table('user_day_index')->where('user', $user)->whereBetween('date', [$from, $to])->get()) {
+			foreach ($userdays as $i => $userday) {
+				$userdays[$i] = new \App\Classes\UserDay($userday);
+			}
+			return $userdays;
 		}
 	}
 
