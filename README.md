@@ -1,6 +1,6 @@
 Gebruikerssysteem moet later op een andere manier gekoppeld worden, voor nu handmatig een gebruiker aanmaken in de db en de volgende urls gebruiken:
-/users/login/1
-/users/logout
+- /users/login/1
+- /users/logout
 
 
 Één profiel/account voor de hele site (email, password)
