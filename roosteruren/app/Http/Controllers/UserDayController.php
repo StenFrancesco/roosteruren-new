@@ -13,7 +13,8 @@ class UserDayController extends Controller {
 		$validated = $request->validate([
 			'from' => 'digits:8',
 			'to' => 'digits:8',
-			'afdeling' => 'integer'
+			'afdeling' => 'integer',
+			'user' => 'integer'
 		]);
 
 		$list = [];
