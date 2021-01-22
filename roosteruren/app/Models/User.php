@@ -48,4 +48,13 @@ class User extends Authenticatable
 			return new \App\Classes\User($user);
 		}
 	}
+
+	public static function all_users() {
+		if ($users = DB::table('users')->get()) {
+			foreach ($users as $i => $user) {
+				$users[$i] = new \App\Classes\User($user);
+			}
+			return $users;
+		}
+	}
 }

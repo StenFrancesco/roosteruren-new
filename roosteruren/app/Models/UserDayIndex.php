@@ -112,6 +112,12 @@ class UserDayIndex {
 		}
 	}
 
+	public static function userday_for_user_date($user, $date) {
+		if ($userday = DB::table('user_day_index')->find(self::id_from_user_date($user, $date))) {
+			return new \App\Classes\UserDay($userday);
+		}
+	}
+
 	public static function id_from_user_date($user, $date) {
 		return intval($date) | intval($user) << 28;
 	}

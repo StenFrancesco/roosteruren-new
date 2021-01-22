@@ -3,6 +3,7 @@ namespace App\Classes;
 
 class DefaultObject {
 	public $data;
+	public $row;
 	public $id;
 
 	public function json() {
@@ -19,6 +20,7 @@ class DefaultObject {
 
 	public function __construct($row) {
 		$this->id = $row->id;
+		$this->row = $row;
 		$this->data = $row->data ? from_json_blob($row->data) : [];
 	}
 }

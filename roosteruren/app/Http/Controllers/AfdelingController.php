@@ -88,4 +88,13 @@ class AfdelingController extends Controller {
 			abort(404);
 		}
 	}
+
+	public function users() {
+
+		$list = [];
+		foreach (\App\Models\User::all_users() as $user) {
+			$list[] = $user->json();
+		}
+		return $list;
+	}
 }
