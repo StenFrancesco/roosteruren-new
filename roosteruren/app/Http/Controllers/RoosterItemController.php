@@ -30,7 +30,7 @@ class RoosterItemController extends Controller {
 			$validated['uren'] = int_to_time(uren_range_to_time($validated['tijden']));
 		}
 		if (!empty($validated['uren'])) {
-			$validated['uren'] = validate_time($validated['uren']);
+			$validated['uren'] = time_to_int($validated['uren']);
 		}
 		
 		if ($afdeling = \App\Models\Afdeling::afdeling_by_id($validated['afdeling'])) {

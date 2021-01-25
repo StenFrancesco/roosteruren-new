@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="weekrooster-header">
 			<div class="row">
 				<div class="col">
@@ -17,6 +17,14 @@
 					<weekrooster-userday :day="day" :user="user" :afdeling="afdeling"></weekrooster-userday>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col">
+					Totaal:
+				</div>
+				<div class="col" v-for="day in dayinfo" :key="day.date_str">
+					<weekrooster-day-total :day="day" :afdeling="afdeling"></weekrooster-day-total>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -24,6 +32,7 @@
 <script>
 
 import WeekroosterUserday from './weekrooster-userday.vue';
+import WeekroosterDayTotal from './weekrooster-day-total.vue';
 
 export default {
 	name: 'Weekrooster',
@@ -42,7 +51,8 @@ export default {
 		this.$store.dispatch('SetWeekrooster', {from: 20210118, to: 20210124, afdeling: 2});
 	},
 	components: {
-		WeekroosterUserday
+		WeekroosterUserday,
+		WeekroosterDayTotal
 	}
 }
 </script>

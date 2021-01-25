@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<input type="text" class="form-control" :value="tijden" @change="UpdateTijden">
-		<input type="text" class="form-control" :value="uren" @change="UpdateUren">
+		<input type="text" class="form-control text-center" :value="tijden" @change="UpdateTijden">
+		<input type="text" class="form-control text-center" :value="uren" @change="UpdateUren">
 	</div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
 					}
 				}
 			}
-			return false;
+			return '';
 		},
 		uren() {
 			let userday = this.Userday();
@@ -31,7 +31,7 @@ export default {
 					}
 				}
 			}
-			return false;
+			return '';
 		}
 	},
 	methods: {

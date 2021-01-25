@@ -1897,6 +1897,50 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/rooster/weekrooster-day-total.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/rooster/weekrooster-day-total.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['day', 'afdeling'],
+  name: 'WeekroosterDayTotal',
+  computed: {
+    uren_total: function uren_total() {
+      var sum = 0;
+
+      for (var i in this.$store.state.userdays) {
+        var userday = this.$store.state.userdays[i];
+
+        if (userday.date == this.day.date) {
+          for (var _i in userday.rooster) {
+            if (userday.rooster[_i].afdeling == this.afdeling.id) {
+              sum += userday.rooster[_i].uren;
+            }
+          }
+        }
+      }
+
+      return sum;
+    }
+  },
+  methods: {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/rooster/weekrooster-userday.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/rooster/weekrooster-userday.vue?vue&type=script&lang=js& ***!
@@ -1930,7 +1974,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
 
-      return false;
+      return '';
     },
     uren: function uren() {
       var userday = this.Userday();
@@ -1943,7 +1987,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
 
-      return false;
+      return '';
     }
   },
   methods: {
@@ -1991,6 +2035,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _weekrooster_userday_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./weekrooster-userday.vue */ "./resources/js/components/rooster/weekrooster-userday.vue");
+/* harmony import */ var _weekrooster_day_total_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weekrooster-day-total.vue */ "./resources/js/components/rooster/weekrooster-day-total.vue");
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2015,6 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Weekrooster',
   computed: {
@@ -2036,7 +2090,8 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   components: {
-    WeekroosterUserday: _weekrooster_userday_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    WeekroosterUserday: _weekrooster_userday_vue__WEBPACK_IMPORTED_MODULE_0__.default,
+    WeekroosterDayTotal: _weekrooster_day_total_vue__WEBPACK_IMPORTED_MODULE_1__.default
   }
 });
 
@@ -37630,6 +37685,45 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/rooster/weekrooster-day-total.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/rooster/weekrooster-day-total.vue ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _weekrooster_day_total_vue_vue_type_template_id_13005188___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./weekrooster-day-total.vue?vue&type=template&id=13005188& */ "./resources/js/components/rooster/weekrooster-day-total.vue?vue&type=template&id=13005188&");
+/* harmony import */ var _weekrooster_day_total_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weekrooster-day-total.vue?vue&type=script&lang=js& */ "./resources/js/components/rooster/weekrooster-day-total.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _weekrooster_day_total_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _weekrooster_day_total_vue_vue_type_template_id_13005188___WEBPACK_IMPORTED_MODULE_0__.render,
+  _weekrooster_day_total_vue_vue_type_template_id_13005188___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/rooster/weekrooster-day-total.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/rooster/weekrooster-userday.vue":
 /*!*****************************************************************!*\
   !*** ./resources/js/components/rooster/weekrooster-userday.vue ***!
@@ -37740,6 +37834,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/rooster/weekrooster-day-total.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/rooster/weekrooster-day-total.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_weekrooster_day_total_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./weekrooster-day-total.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/rooster/weekrooster-day-total.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_weekrooster_day_total_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/rooster/weekrooster-userday.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************!*\
   !*** ./resources/js/components/rooster/weekrooster-userday.vue?vue&type=script&lang=js& ***!
@@ -37802,6 +37912,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/rooster/weekrooster-day-total.vue?vue&type=template&id=13005188&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/rooster/weekrooster-day-total.vue?vue&type=template&id=13005188& ***!
+  \**************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_weekrooster_day_total_vue_vue_type_template_id_13005188___WEBPACK_IMPORTED_MODULE_0__.render,
+/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_weekrooster_day_total_vue_vue_type_template_id_13005188___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_weekrooster_day_total_vue_vue_type_template_id_13005188___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./weekrooster-day-total.vue?vue&type=template&id=13005188& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/rooster/weekrooster-day-total.vue?vue&type=template&id=13005188&");
 
 
 /***/ }),
@@ -37913,6 +38040,33 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/rooster/weekrooster-day-total.vue?vue&type=template&id=13005188&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/rooster/weekrooster-day-total.vue?vue&type=template&id=13005188& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => /* binding */ render,
+/* harmony export */   "staticRenderFns": () => /* binding */ staticRenderFns
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "text-center" }, [
+    _vm._v("\n\t" + _vm._s(_vm.uren_total) + "\n")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/rooster/weekrooster-userday.vue?vue&type=template&id=03827034&":
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/rooster/weekrooster-userday.vue?vue&type=template&id=03827034& ***!
@@ -37931,14 +38085,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("input", {
-      staticClass: "form-control",
+      staticClass: "form-control text-center",
       attrs: { type: "text" },
       domProps: { value: _vm.tijden },
       on: { change: _vm.UpdateTijden }
     }),
     _vm._v(" "),
     _c("input", {
-      staticClass: "form-control",
+      staticClass: "form-control text-center",
       attrs: { type: "text" },
       domProps: { value: _vm.uren },
       on: { change: _vm.UpdateUren }
@@ -37968,7 +38122,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container-fluid" }, [
     _c(
       "div",
       { staticClass: "weekrooster-header" },
@@ -38014,7 +38168,31 @@ var render = function() {
             ],
             2
           )
-        })
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row" },
+          [
+            _c("div", { staticClass: "col" }, [
+              _vm._v("\n\t\t\t\tTotaal:\n\t\t\t")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.dayinfo, function(day) {
+              return _c(
+                "div",
+                { key: day.date_str, staticClass: "col" },
+                [
+                  _c("weekrooster-day-total", {
+                    attrs: { day: day, afdeling: _vm.afdeling }
+                  })
+                ],
+                1
+              )
+            })
+          ],
+          2
+        )
       ],
       2
     )
