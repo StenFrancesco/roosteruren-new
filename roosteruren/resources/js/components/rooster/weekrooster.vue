@@ -4,6 +4,7 @@
 			<div class="row">
 				<div class="col">
 					<b>{{ afdeling.title }}</b>
+					<i>(new)</i>
 				</div>
 				<div class="col text-center" v-for="day in dayinfo" :key="day.date_str">
 					{{ day.title_short }}

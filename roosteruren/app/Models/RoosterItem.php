@@ -50,14 +50,14 @@ class RoosterItem {
 
 	public static function roosteritem_by_id($id) {
 		if ($roosteritem = DB::table('roosteritem')->find($id)) {
-			return new \App\Classes\Roosteritem($roosteritem);
+			return new \App\Classes\RoosterItem($roosteritem);
 		}
 	}
 
 	public static function roosteritems_by_user_date($user, $date) {
 		if ($roosteritems = DB::table('roosteritem')->where('user', $user)->where('date', $date)->get()) {
 			foreach ($roosteritems as $i => $roosteritem) {
-				$roosteritems[$i] = new \App\Classes\Roosteritem($roosteritem);
+				$roosteritems[$i] = new \App\Classes\RoosterItem($roosteritem);
 			}
 			return $roosteritems;
 		}
