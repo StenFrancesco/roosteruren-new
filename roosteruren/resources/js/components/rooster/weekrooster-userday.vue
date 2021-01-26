@@ -1,7 +1,11 @@
 <template>
-	<div>
-		<input type="text" class="form-control text-center" :value="tijden" @change="UpdateTijden">
-		<input type="text" class="form-control text-center" :value="uren" @change="UpdateUren">
+	<div class="userday">
+		<input type="text" class="form-control text-center form-control-sm" :value="tijden" @change="UpdateTijden">
+		<input type="text" class="form-control text-center form-control-sm" :value="$filters.int_to_time(uren)" @change="UpdateUren">
+		<div v-for="andere_afdeling in andere_afdelingen" class="text-center">
+			<b>{{ andere_afdeling.title }}</b><br>
+			<i>{{ andere_afdeling.tijden }}</i>
+		</div>
 	</div>
 </template>
 
@@ -27,11 +31,26 @@ export default {
 			if (userday) {
 				for (let i in userday.rooster) {
 					if (userday.rooster[i].afdeling == this.afdeling.id) {
-						return userday.rooster[i].uren;
+						return userday.rooster[i].uren ? userday.rooster[i].uren : null;
 					}
 				}
 			}
-			return '';
+			return null;
+		},
+		andere_afdelingen() {
+			let userday = this.Userday(), andere_afdelingen = [];
+			if (userday) {
+				for (let i in userday.rooster) {
+					if (userday.rooster[i].afdeling != this.afdeling.id) {
+						let afdeling = this.$store.getters.afdelingById(userday.rooster[i].afdeling);
+						andere_afdelingen.push({
+							title: afdeling ? afdeling.title : 'Onbekend',
+							tijden: userday.rooster[i].tijden
+						});
+					}
+				}
+			}
+			return andere_afdelingen;
 		}
 	},
 	methods: {
@@ -63,3 +82,9 @@ export default {
 	}
 }
 </script>
+
+<style scoped>
+.userday {
+	padding: 10px;
+}
+</style>

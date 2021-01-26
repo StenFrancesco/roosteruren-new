@@ -5,7 +5,7 @@
 				<div class="col">
 					<b>{{ afdeling.title }}</b>
 				</div>
-				<div class="col" v-for="day in dayinfo" :key="day.date_str">
+				<div class="col text-center" v-for="day in dayinfo" :key="day.date_str">
 					{{ day.title_short }}
 				</div>
 			</div>

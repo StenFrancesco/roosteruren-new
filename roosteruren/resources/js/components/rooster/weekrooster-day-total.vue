@@ -1,6 +1,6 @@
 <template>
 	<div class="text-center">
-		{{ uren_total }}
+		{{ $filters.int_to_time(uren_total) }}
 	</div>
 </template>
 
