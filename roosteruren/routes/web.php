@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/test_bart', function () {
+    return view('test/bart');
+});
+Route::get('/test_sten', function () {
+    return view('test/sten');
+});
+
 
 
 Route::get('rooster', [\App\Http\Controllers\RoosterController::class, 'index']);
