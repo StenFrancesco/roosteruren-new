@@ -433,13 +433,15 @@
 								<div class="card">
 									<div class="card-body">
 										
+										<div class="alert alert-info">Opmerkingen bij dit rooster: dit is een test rooster</div>
+										
 										<div class="week-grid header">
 											<div class="label">Tuinmeubelen</div>
 											<div class="day">Maandag<br><small>1 februari 2021</small></div>
 											<div class="day">Dinsdag<br><small>2 februari 2021</small></div>
 											<div class="day">Woensdag<br><small>3 februari 2021</small></div>
 											<div class="day">Donderdag<br><small>4 februari 2021</small></div>
-											<div class="day">Vrijdag<br><small>5 februari 2021</small></div>
+											<div class="day">Vrijdag<br><small>5 februari 2021</small><div class="time-range-container"><div class="time-range-block verlof-range" style="width: 100%;margin-left:0%;">Koopavond</div></div></div>
 											<div class="day">Zaterdag<br><small>6 februari 2021</small></div>
 											<div class="day">Zondag<br><small>7 februari 2021</small></div>
 											<div class="sum"></div>
@@ -456,7 +458,7 @@
 											</div>
 											<div class="day"></div>
 											<div class="day"><div class="time-range-container"><div class="time-range-block ziek-range" style="width: 100%;margin-left:0%;">Ziek</div></div></div>
-											<div class="sum">40:00<br><small>contract: 40:00</small></div>
+											<div class="sum">40:00<br><small>contract: 40:00</small><br><small>kosten: &euro; 800,00</small></div>
 										</div>
 										<div class="week-grid content-row">
 											<div class="label">Sanne Klaver<br><small>Stagiere</small></div>
@@ -479,9 +481,20 @@
 												<div class="day"><div class="time-range-container"><div class="time-range-block verlof-range" style="width: 50%;margin-left:50%;">Vrij vanaf 12:00</div></div></div>
 											</div>
 											<div class="day"><div class="time-range-container"><div class="time-range-block verlof-range" style="width: 100%;margin-left:0%;">Vrij</div></div></div>
-											<div class="day"><div class="time-range-container"><div class="time-range-block verlof-range" style="width: 100%;margin-left:0%;">Vrij</div></div></div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block verlof-range" style="width: 100%;margin-left:0%;"><i class="far fa-clock"></i> Vrij (in behandeling)</div></div></div>
 											<div class="day"></div>
 											<div class="sum">40:00<br><small>contract: 40:00</small></div>
+										</div>
+										<div class="week-grid content-row">
+											<div class="label"><input type="text" class="form-control" placeholder="Medewerker toevoegen..."></div>
+											<div class="day"></div>
+											<div class="day"></div>
+											<div class="day"></div>
+											<div class="day"></div>
+											<div class="day"></div>
+											<div class="day"></div>
+											<div class="day"></div>
+											<div class="sum"></div>
 										</div>
 										<div class="week-grid footer">
 											<div class="label">Totaal</div>
@@ -504,6 +517,17 @@
 											<div class="day">0 / 0</div>
 											<div class="day">0 / 0</div>
 											<div class="sum"></div>
+										</div>
+										<div class="week-grid footer">
+											<div class="label">Kosten</div>
+											<div class="day">&euro; 150,00</div>
+											<div class="day">&euro; 150,00</div>
+											<div class="day">&euro; 150,00</div>
+											<div class="day">&euro; 150,00</div>
+											<div class="day">&euro; 150,00</div>
+											<div class="day">&euro; 0,00</div>
+											<div class="day">&euro; 0,00</div>
+											<div class="sum">&euro; 1.050,00</div>
 										</div>
 									</div>
 								</div>
