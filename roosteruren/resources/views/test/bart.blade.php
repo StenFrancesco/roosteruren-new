@@ -218,7 +218,7 @@
 
 .week-grid {
 	display: grid;
-	grid-template-columns: 200px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+	grid-template-columns: 200px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 100px;
 }
 .week-grid > div {
 	border-left: 1px solid #f1f3fa;
@@ -234,6 +234,70 @@
 	text-align: center;
 }
 
+
+.content-row {
+	border-top: 1px solid #eee;
+}
+.header + .content-row {
+	border-top: none;
+}
+
+.week-grid.footer > div {
+	border-top: 1px solid #ccc;
+}
+
+.time-range-container {
+	margin-top: 3px;
+}
+.time-range-container:first-child {
+	margin-top: 0px;
+}
+.time-range-block {
+	border: 1px solid transparent;
+	border-radius: .25rem;
+	padding: 4px 8px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.time-range-block.afdeling-range {
+	background-color: #d1e7dd;
+	border-color: #badbcc;
+	color: #0f5132;
+}
+.time-range-block.other-afdeling-range {
+	background-color: #fff3cd;
+	border-color: #ffecb5;
+	color: #664d03;
+}
+.time-range-block.verlof-range {
+	color: #055160;
+	background-color: #cff4fc;
+	border-color: #b6effb;
+}
+.time-range-block.ziek-range {
+	color: #055160;
+	background-color: #cff4fc;
+	border-color: #b6effb;
+}
+
+.has-conflict {
+	background-color: #f8d7da;
+}
+
+.vaste-vrije-dag {
+	background-color: #eee;
+}
+
+
+.footer .day {
+	text-align: center;
+}
+.bezetting-under {
+	background-color: #f8d7da;
+}
+.bezetting-over {
+	background-color: #fff3cd;
+}
 		</style>
     </head>
 	<body>
@@ -371,38 +435,76 @@
 										
 										<div class="week-grid header">
 											<div class="label">Tuinmeubelen</div>
-											<div class="day">Maandag</div>
-											<div class="day">Dinsdag</div>
-											<div class="day">Woensdag</div>
-											<div class="day">Donderdag</div>
-											<div class="day">Vrijdag</div>
-											<div class="day">Zaterdag</div>
-											<div class="day">Zondag</div>
+											<div class="day">Maandag<br><small>1 februari 2021</small></div>
+											<div class="day">Dinsdag<br><small>2 februari 2021</small></div>
+											<div class="day">Woensdag<br><small>3 februari 2021</small></div>
+											<div class="day">Donderdag<br><small>4 februari 2021</small></div>
+											<div class="day">Vrijdag<br><small>5 februari 2021</small></div>
+											<div class="day">Zaterdag<br><small>6 februari 2021</small></div>
+											<div class="day">Zondag<br><small>7 februari 2021</small></div>
 											<div class="sum"></div>
 										</div>
-										<div class="week-grid">
-											<div class="label">Bart Kaandorp</div>
-											<div class="day"><div class="time-range-block afdeling-uren" style="width: 70%;left:10%;">9:00 - 18:00</div></div>
-											<div class="day">9:00 - 18:00</div>
-											<div class="day">9:00 - 18:00</div>
-											<div class="day">9:00 - 18:00</div>
-											<div class="day">9:00 - 18:00<br>Kassa 18 - 21</div>
+										<div class="week-grid content-row">
+											<div class="label">Bart Kaandorp<br><small>Afdelingsleider</small></div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block afdeling-range" style="width: 100%;margin-left:0%;">9:00 - 18:00</div></div></div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block afdeling-range" style="width: 100%;margin-left:0%;">9:00 - 18:00</div></div></div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block afdeling-range" style="width: 100%;margin-left:0%;">9:00 - 18:00</div></div></div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block afdeling-range" style="width: 80%;margin-left:0%;">9:00 - 18:00</div></div></div>
+											<div class="day has-conflict">
+												<div class="time-range-container"><div class="time-range-block afdeling-range" style="width: 100%;margin-left:0%;">9:00 - 18:00</div></div>
+												<div class="time-range-container"><div class="time-range-block other-afdeling-range" style="width: 100%;margin-left:0%;">Kassa: 9:00 - 18:00</div></div>
+											</div>
 											<div class="day"></div>
-											<div class="day"></div>
-											<div class="sum">40 uur</div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block ziek-range" style="width: 100%;margin-left:0%;">Ziek</div></div></div>
+											<div class="sum">40:00<br><small>contract: 40:00</small></div>
 										</div>
-										<div class="week-grid">
-											<div class="label">Sanne Klaver</div>
-											<div class="day">9:00 - 18:00</div>
-											<div class="day">9:00 - 18:00</div>
-											<div class="day">9:00 - 18:00</div>
-											<div class="day">9:00 - 18:00</div>
-											<div class="day">9:00 - 18:00<br>Kassa 18 - 21</div>
-											<div class="day"></div>
-											<div class="day"></div>
-											<div class="sum">40 uur</div>
+										<div class="week-grid content-row">
+											<div class="label">Sanne Klaver<br><small>Stagiere</small></div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block afdeling-range" style="width: 50%;margin-left:15%;">10:00 - 14:00</div></div></div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block afdeling-range" style="width: 100%;margin-left:0%;">9:00 - 18:00</div></div></div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block afdeling-range" style="width: 100%;margin-left:0%;">9:00 - 18:00</div></div></div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block afdeling-range" style="width: 80%;margin-left:0%;">9:00 - 18:00</div></div></div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block afdeling-range" style="width: 100%;margin-left:0%;">9:00 - 18:00</div></div></div>
+											<div class="day vaste-vrije-dag"></div>
+											<div class="day vaste-vrije-dag"></div>
+											<div class="sum">40:00<br><small>contract: 40:00</small></div>
 										</div>
-										
+										<div class="week-grid content-row">
+											<div class="label">Stendert Baars</div>
+											<div class="day"></div>
+											<div class="day"></div>
+											<div class="day"></div>
+											<div class="day">
+												<div class="time-range-container"><div class="time-range-block afdeling-range" style="width: 50%;margin-left:0%;">9:00 - 12:00</div></div>
+												<div class="day"><div class="time-range-container"><div class="time-range-block verlof-range" style="width: 50%;margin-left:50%;">Vrij vanaf 12:00</div></div></div>
+											</div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block verlof-range" style="width: 100%;margin-left:0%;">Vrij</div></div></div>
+											<div class="day"><div class="time-range-container"><div class="time-range-block verlof-range" style="width: 100%;margin-left:0%;">Vrij</div></div></div>
+											<div class="day"></div>
+											<div class="sum">40:00<br><small>contract: 40:00</small></div>
+										</div>
+										<div class="week-grid footer">
+											<div class="label">Totaal</div>
+											<div class="day">16:00</div>
+											<div class="day">16:00</div>
+											<div class="day">16:00</div>
+											<div class="day">16:00</div>
+											<div class="day">16:00</div>
+											<div class="day"></div>
+											<div class="day"></div>
+											<div class="sum">80:30</div>
+										</div>
+										<div class="week-grid footer">
+											<div class="label">Bezetting</div>
+											<div class="day">2 / 2</div>
+											<div class="day">2 / 2</div>
+											<div class="day bezetting-over">2 / 1</div>
+											<div class="day">3 / 3</div>
+											<div class="day bezetting-under">2 / 4</div>
+											<div class="day">0 / 0</div>
+											<div class="day">0 / 0</div>
+											<div class="sum"></div>
+										</div>
 									</div>
 								</div>
 							</div>
